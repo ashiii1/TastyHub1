@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {
-  AiOutlineMenu,
+  
   AiOutlineClose,
 } from "react-icons/ai";
 import { BsFillCartFill, BsPerson } from "react-icons/bs";
@@ -12,10 +12,18 @@ const TopNav = () => {
   const [sideNav, setSideNav] = useState(false);
 
   return (
-<div className={`max-w-[1520px] mx-auto flex justify-between items-center p-4 bg-orange-700 sticky top-0 z-50`}>
+    <div className={`max-w-[1520px] mx-auto flex justify-between items-center p-4 ${sideNav ? 'bg-red-700' : 'bg-orange-700'} sticky top-0 z-50`}>
       <div className="flex items-center">
         <div onClick={() => setSideNav(!sideNav)} className="cursor-pointer">
-          <AiOutlineMenu size={25} />
+          {sideNav ? (
+            <AiOutlineClose size={25} />
+          ) : (
+            <img
+              src="https://static.vecteezy.com/system/resources/thumbnails/009/166/174/small/amd-letter-logo-design-with-polygon-shape-amd-polygon-and-cube-shape-logo-design-amd-hexagon-logo-template-white-and-black-colors-amd-monogram-business-and-real-estate-logo-vector.jpg"
+              alt="Menu"
+              className="h-12 w-12"
+            />
+          )}
         </div>
         <h1 className="text-2xl sm:text-3xl lg:text-4xl px-2">
           Tasty
@@ -40,12 +48,12 @@ const TopNav = () => {
             ? "fixed top-0 left-0 w-[300px] h-screen bg-white z-10 duration-300"
             : "fixed top-0 left-[-100%] w-[300px] h-screen bg-white z-10 duration-300"
         }
-        style={{ marginTop: sideNav ? '0' : '64px' }} // Adjust the value based on your design
+        style={{ marginTop: sideNav ? '0' : '64px' }}
       >
         <AiOutlineClose onClick={() => setSideNav(!sideNav)} size={25}
           className='absolute right-4 top-4 cursor-pointer'
         />
-        <h2 className='text-2xl p-4'>Yum <span className='text-orange-700 font-bold'>Eats</span></h2>
+        <h2 className='text-2xl p-4'>Yum <span className='text-red-700 font-bold'>Eats</span></h2>
         <nav>
           <ul className="flex flex-col p-4 text-gray-900">
             <li className="text-xl py-4 flex">
