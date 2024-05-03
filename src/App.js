@@ -1,6 +1,6 @@
 
 import Categories from "./components/Categories";
-import Delivery from "./components/Delivery";
+//import Delivery from "./components/Delivery";
 import Featured from "./components/Featured";
 import Footer from "./components/Footer";
 import Meal from "./components/Meal";
@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <TopNav />
       <Featured/>
-      <Delivery/>
+      {/* <Delivery/> */}
       <TopPicks/>
       <Meal/>
       <Categories/>

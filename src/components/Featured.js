@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import './Featured.css'
+import React, { useState, useCallback,useEffect, useMemo } from 'react';
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { RxDotFilled } from 'react-icons/rx';
 
 const Featured = () => {
-  const sliders = [
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const sliders = useMemo(() => [
     {
       url: 'https://media.istockphoto.com/id/1010677810/photo/traditional-uzbek-oriental-cuisine-uzbek-family-table-from-different-dishes-for-the-new-year.jpg?s=612x612&w=0&k=20&c=bCezyNqQUeYWFbodrf2kloJJBPPOeXbr4Fwd6B-wfxM='
     },
@@ -23,54 +26,49 @@ const Featured = () => {
     {
       url: 'https://png.pngtree.com/background/20210711/original/pngtree-colorful-delicious-ice-cream-background-picture-image_1128318.jpg',
     },
-  
-  ];
+  ], []);
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextSlider = () => {
+  const nextSlider = useCallback(() => {
     const isLastSlide = currentIndex === sliders.length - 1;
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
-  };
+  }, [currentIndex, sliders]);
 
   useEffect(() => {
-    // Automatically move to the next slide every 1 second
     const intervalId = setInterval(nextSlider, 3000);
-
-    // Clean up the interval on component unmount
     return () => clearInterval(intervalId);
-  }, );
+  }, [nextSlider]);
 
   return (
-    <div className='max-w-[1540px] h-[500px] w-full m-auto py-4 px-4 relative group'>
-  <div
-    className='w-full h-full rounded-2xl bg-center bg-cover duration-300 flex items-center'
-    style={{ backgroundImage: `url(${sliders[currentIndex].url})` }}
-  >
-  <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-200 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]">
-      <AiOutlineSearch size={25} />
-      <input
-        className="bg-transparent p-2 w-full focus:outline-none"
-        type="text"
-        placeholder="search meals"
-      />
-    </div>
-  
-
+    <div className='featured-slider-container'>
+      <div
+        className='slider-image'
+        style={{ backgroundImage: `url(${sliders[currentIndex].url})` }}
+      >
+        <div className="search-box">
+          <AiOutlineSearch size={25} />
+          <input
+            className="search-input"
+            type="text"
+            placeholder="Search meals"
+          />
+        </div>
       </div>
       
-      <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-orange-700 text-white cursor-pointer'>
-        <BsChevronCompactLeft onClick={nextSlider} />
+      <div className='slider-controls'>
+        <div className='slider-control-left' onClick={nextSlider}>
+          <BsChevronCompactLeft />
+        </div>
+        <div className='slider-control-right' onClick={nextSlider}>
+          <BsChevronCompactRight />
+        </div>
       </div>
-      <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-orange-700 text-white cursor-pointer'>
-        <BsChevronCompactRight onClick={nextSlider} />
-      </div>
-      <div className='flex top-4 justify-center py-2'>
+      
+      <div className='slider-dots'>
         {sliders.map((sliderItems, slideIndex) => (
           <div
             key={slideIndex}
-            className={`text-2xl ${slideIndex === currentIndex ? 'text-orange-700' : 'text-gray-400'}`}
+            className={`dot ${slideIndex === currentIndex ? 'active' : ''}`}
           >
             <RxDotFilled />
           </div>

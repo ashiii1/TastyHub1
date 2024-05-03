@@ -1,0 +1,74 @@
+/* TopNav.css */
+
+.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.5);
+  position: fixed;
+  width: 100%;
+  height: 70px;
+  z-index: 1000;
+  padding: 0 20px; /* Add padding for spacing */
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.menu-icon {
+  margin-right: 20px; /* Add margin for spacing */
+  cursor: pointer;
+}
+
+.menu-logo {
+  height: 4.5rem;
+  width: auto; /* Ensure the width adjusts based on height */
+}
+
+.title {
+  font-size: 2rem;
+  margin-left: 0.5rem;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.nav-list {
+  display: flex;
+  
+  align-items: center;
+  margin-right: 20px; /* Add margin for spacing */
+}
+
+.nav-items {
+cursor: pointer;
+font-weight: 600;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.nav-items li {
+  margin-right: 20px; /* Add margin for spacing */
+}
+
+.side-nav {
+  display: none; /* Initially hide the side nav */
+}
+
+.side-nav.open {
+  display: block; /* Show the side nav when open */
+}
+
+.close-icon {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+}
+
+/* Add additional styling as needed */
