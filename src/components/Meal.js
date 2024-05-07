@@ -11,6 +11,16 @@ const Meal = () => {
       })
     );
   };
+
+// useEffect(()=>{
+// fetchData()
+// },[])
+
+// const fetchData=async()=>{
+// const  data=await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.37240&lng=78.43780&restaurantId=11091&catalog_qa=undefined&isMenuUx4=true&submitAction=ENTER")
+// const json= await data.json()
+// console.log(json)
+// }
   return (
     <div className="max-w-[1520px] m-auto px-4 py-12">
       <h1 className="text-orange-500 font-bold text-2xl text-center py-2">
