@@ -40,7 +40,7 @@
   display: flex;
   
   align-items: center;
-  margin-right: 20px; /* Add margin for spacing */
+  margin-right: 20px; 
 }
 
 .nav-items {
@@ -53,15 +53,15 @@ font-weight: 600;
 }
 
 .nav-items li{
-  margin-right: 20px; /* Add margin for spacing */
+  margin-right: 20px;
 }
 
 .side-nav {
-  display: none; /* Initially hide the side nav */
+  display: none;
 }
 
 .side-nav.open {
-  display: block; /* Show the side nav when open */
+  display: block;
 }
 
 .close-icon {
@@ -71,4 +71,3 @@ font-weight: 600;
   cursor: pointer;
 }
 
-/* Add additional styling as needed */
