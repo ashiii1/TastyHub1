@@ -2,6 +2,7 @@
 import { AiOutlineClose } from 'react-icons/ai';
 import { useState } from 'react';
 import './TopNav.css'; // Adjust the path as per your project structure
+import { Link } from 'react-router-dom';
 
 const TopNav = () => {
   const [sideNav, setSideNav] = useState(false);
@@ -21,11 +22,11 @@ const TopNav = () => {
 
       <nav className={`nav-list ${sideNav ? 'open' : ''}`}>
         <ul className='nav-items'>
-          <li>Home</li>
-          <li>MyList</li>
-          <li>About</li>
-          <li>Help</li>
-          <li>Cart</li>
+          <Link to={"/"}>Home</Link>
+         <li ><a href="/mylist">MyList</a></li>
+          <Link to={"/about"}>About</Link>
+          <Link to={"/account"}>Account</Link>
+          <Link to={"/cart"}>Cart</Link>
         </ul>
       </nav>
 
